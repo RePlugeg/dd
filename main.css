@@ -1,0 +1,1249 @@
+/* =========================================
+   1. GLOBAL STYLES & ROOT
+   ========================================= */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+:root {
+    --main-color: #ffffff;
+    --hover-color: hsl(0, 0%, 73%);
+    --dark-color: #131313;
+    --parg-color: hsl(60, 1.89%, 20.78%);
+    --border-color: rgba(102, 102, 102, 0.16);
+    --body-color: hsl(0, 16%, 15%);
+    --accent-color2: #d4af37;
+    --light-gold: #f4e4bc;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --text-dim: #a0a0a0;
+    --transition-speed: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    --accent-color: #ffffff;
+    --link-color: #64ffda;
+    --gold-deep: #b8962e;
+    --gold-soft: #e6c766;
+    --gold-glow: rgba(212,175,55,0.35);
+    --black-soft: #1a1a1a;
+    --black-elevated: #222222;
+    --black-glass: rgba(0,0,0,0.35);
+    --gray-light: #c9c9c9;
+    --gray-mid: #8a8a8a;
+    --gray-dark: #2a2a2a;
+    --surface-1: #1e1e1e;
+    --surface-2: #242424;
+    --surface-3: #2d2d2d;
+    --accent-blue: #3a86ff;
+    --accent-purple: #8338ec;
+    --accent-teal: #00b4d8;
+    --shadow-soft: rgba(0,0,0,0.25);
+    --shadow-medium: rgba(0,0,0,0.45);
+    --shadow-strong: rgba(0,0,0,0.65);
+    --glass-border: rgba(255,255,255,0.08);
+    --divider-color: rgba(255,255,255,0.06);
+}
+
+/* Scrollbar */
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--main-color);
+}
+
+body::-webkit-scrollbar-thumb {
+    background: var(--gray-light);
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: var(--main-color);
+}
+
+body {
+    background-color: var(--black-elevated);
+}
+
+/* =========================================
+   2. REUSABLE BACKGROUNDS & TYPOGRAPHY
+   ========================================= */
+.bakcs {
+    background: url(./black-background-with-fabric-texture.webp) no-repeat center center;
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.back {
+    background: url(./bock.webp) no-repeat center center;
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.back::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(2px);
+    background: rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+h1 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+}
+
+p {
+    color: var(--parg-color);
+}
+
+/* =========================================
+   3. HEADER & NAVIGATION
+   ========================================= */
+header {
+    position: fixed;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    z-index: 10000;
+}
+
+header .container {
+    pointer-events: auto;
+    width: 80%;
+    margin: auto;
+    align-items: center;
+    background: rgba(3, 3, 3, 0.09);
+    border-radius: 20px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.5px);
+    -webkit-backdrop-filter: blur(6.5px);
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    padding: 10px;
+}
+
+header .container .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+}
+
+header .container .nav .links ul {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+.links ul li a {
+    color: var(--accent-color);
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.links ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--accent-color2);
+    transition: 0.3s;
+}
+
+.links ul li a:hover::after {
+    width: 100%;
+}
+
+.links ul li a:hover {
+    transition: var(--transition-speed);
+    color: var(--accent-blue);
+}
+
+header .container .logo {
+    width: 150px;
+    min-width: 150px;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+}
+
+header .container .logo h1 {
+    width: 100%;
+    padding: 10px;
+    color: var(--accent-color2);
+}
+
+header .container .icons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    position: relative;
+}
+
+header .container .icons i {
+    color: var(--accent-color);
+    font-size: 25px;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+header .container .icons .cart-count, 
+header .container .icons .fav-count {
+    top: -5px;
+    right: -5px;
+    position: absolute;
+    background: var(--accent-color2);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    font-size: 13px;
+    color: var(--dark-color);
+    border: 1px solid var(--border-color);
+}
+
+header .container .icons i:hover {
+    color: var(--accent-color);
+    background-color: var(--body-color);
+    transition: var(--transition-speed);
+}
+
+/* =========================================
+   4. LANDING SECTION
+   ========================================= */
+.gif {
+    width: 80%;
+    margin: auto;
+}
+
+.gif img {
+    width: 10%;
+}
+
+.landing_full {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 5%;
+    gap: 50px;
+    height: 99vh;
+    margin-bottom: 250px;
+    background-attachment: fixed;
+}
+
+.landing_full .landing-right {
+    max-width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    text-align: left;
+}
+
+.landing_full .landing-right .text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.landing_full .landing-right .text h1 {
+    font-size: 5vw;
+    color: var(--accent-color2);
+    font-family: "Montserrat";
+}
+
+.landing_full .landing-right .text h4 {
+    font-size: 2vw;
+    color: var(--light-gold);
+}
+
+.landing_full .landing-right .text p {
+    font-size: 17px;
+    color: var(--accent-color);
+}
+
+.btns {
+    display: flex;
+    margin-top: 20px;
+}
+
+.btns button {
+    padding: 12px 30px;
+    margin-right: 10px;
+    cursor: pointer;
+    border: 1px solid var(--black-soft);
+    transition: 0.3s;
+}
+
+.btn-shop {
+    background: var(--light-gold);
+    color: var(--dark-color);
+}
+
+.btns button:hover {
+    background: var(--hover-color);
+}
+
+/* =========================================
+   5. SWIPER SLIDER ELEMENTS
+   ========================================= */
+.mySwiper {
+    max-width: 80%;
+    width: 100%;
+    height: 550px;
+    margin-top: 50px;
+}
+
+.slide-content {
+    padding: 40px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background: rgba(43, 43, 43, 0.562);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 40px rgba(0,0,5,0.5);
+}
+
+.landing-right {
+    flex: 1.5;
+    color: var(--accent-color);
+}
+
+.landing-r {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    line-height: 1.5;
+}
+
+.landing-r .container .disc h1 {
+    font-size: 3vw;
+    color: var(--accent-color);
+    font-family: "Montserrat";
+    padding: 0 5%;
+}
+
+.landing-r .container .disc h2 {
+    font-size: 2vw;
+    color: var(--accent-color2);
+    font-family: "Montserrat";
+    padding: 0 5%;
+}
+
+.landing-r .container .disc p {
+    font-size: 20px;
+    color: var(--accent-color);
+    padding: 0 5%;
+}
+
+.backs {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+}
+
+.backs h1 {
+    color: var(--light-gold);
+    font-size: 20vw;
+    font-family: "Montserrat";
+}
+
+.sss {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+/* =========================================
+   6. FEATURES SECTION
+   ========================================= */
+.features {
+    width: 90%;
+    margin: auto;
+}
+
+.features .container {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    padding: 16px;
+    border-radius: 15px;
+    flex-wrap: wrap;
+}
+
+.features .container .feature-item {
+    display: flex;
+    width: 30%;
+    gap: 20px;
+    align-items: center;
+    flex: 1;
+    min-width: 240px;
+    padding: 16px;
+    background: var(--main-color);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px var(--shadow-soft);
+    cursor: pointer;
+    transition: var(--transition-speed);
+}
+
+.features .container .feature-item:hover {
+    transform: scale(1.1);
+}
+
+.features .container .feature-item img {
+    width: 50px;
+}
+
+.features .container .feature-item .text h4 {
+    font-size: 18px;
+    color: var(--dark-color);
+    margin-bottom: 5px;
+}
+
+.features .container .feature-item .text p {
+    font-size: 14px;
+    color: var(--parg-color);
+}
+
+/* =========================================
+   7. PRODUCT CARDS & GRID
+   ========================================= */
+.products {
+    padding: 50px 0;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.top-slide {
+    position: relative;
+    margin-bottom: 20px;
+    padding: 20px 0;
+    border-bottom: 2px solid var(--glass-border);
+    width: 90%;
+    margin: auto;
+    text-transform: capitalize;
+    font-size: 50px;
+    font-family: "Montserrat";
+    color: var(--accent-color2);
+}
+
+.top-slide h2 span {
+    font-weight: normal;
+    text-transform: capitalize;
+    font-size: 50px;
+    font-family: "Montserrat";
+    color: var(--accent-color2);
+}
+
+.icons-pro {
+    display: flex;
+    z-index: 3;
+    align-items: center;
+    position: absolute;
+    top: 5%;
+    right: 0%;
+    transform: translateY(-50%);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.4s ease;
+}
+
+.icons-pro i {
+    background: var(--main-color);
+    color: var(--dark-color);
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border: 1px solid var(--border-color);
+    border-bottom-left-radius: 10%;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.9s;
+}
+
+.icons-pro i:hover {
+    color: var(--black-elevated);
+    background: var(--gold-soft);
+    transition: 0.3s ease-in-out;
+}
+
+.container:hover .icons-pro {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.products .container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    border-radius: 18px;
+    background: var(--card-bg);
+    border: 1px solid var(--divider-color);
+    overflow: visible;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed), border var(--transition-speed);
+    z-index: 1;
+}
+
+.products .container:hover {
+    transform: translateY(-10px);
+    border: 1px solid var(--accent-color2);
+    box-shadow: 0 18px 45px var(--shadow-strong);
+    z-index: 10;
+}
+
+.products .container .img-box {
+    width: 100%;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    background: rgba(3, 3, 3, 0.09);
+    border-radius: 20px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.5px);
+    -webkit-backdrop-filter: blur(6.5px);
+    border: 1px solid var(--card-bg);
+    position: relative;
+    overflow: hidden;
+}
+
+.products .container .img-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.5));
+    transition: var(--transition-speed);
+    backface-visibility: hidden;
+    -webkit-font-smoothing: subpixel-antialiased;
+    transform: translateZ(0);
+}
+
+/* Swiper specific UI */
+.btn-swip {
+    position: absolute;
+    top: 24px;
+    right: 0;
+    background-color: #f1f1e985;
+    border: 1px solid var(--border-color);
+    border-radius: 10%;
+    color: var(--parg-color) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+    padding: 5px 0;
+}
+
+.btn-swip::after {
+    font-size: 25px;
+}
+
+.btn-swip:hover {
+    background-color: var(--main-color);
+    color: var(--accent-color) !important;
+}
+
+.btn-swip.swiper-button-prev {
+    left: calc(100% - 90px);
+}
+
+.products .container .info h2 {
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--gold-soft);
+    margin-bottom: 6px;
+}
+
+.products .container .info p {
+    font-size: 15px;
+    color: var(--text-dim);
+    margin-bottom: 14px;
+    line-height: 1.5;
+}
+
+.products .container .price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-top: 15px;
+    margin-top: auto;
+    border-top: 1px solid var(--divider-color);
+    margin-bottom: 10px;
+}
+
+.products .container .price p, 
+.products .container .price h4 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin: 0;
+    display: inline-block;
+}
+
+/* Swiper Pagination & Navigation Skins */
+.swiper-pagination-bullet {
+    background: var(--gray-mid) !important;
+    opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--accent-color2) !important;
+    opacity: 1;
+    width: 25px;
+    border-radius: 5px;
+}
+
+.btn-swip {
+    color: var(--accent-color2) !important;
+    background: var(--black-elevated);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid var(--glass-border);
+}
+
+.btn-swip::after {
+    font-size: 18px !important;
+    font-weight: bold;
+}
+
+.btn-swip:hover {
+    background: var(--accent-color2);
+    color: var(--dark-color) !important;
+}
+
+/* Product Buttons */
+.products .container .btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.products .container .btn button {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    transition: var(--transition-speed);
+}
+
+.products .container .btn button:last-child {
+    background: var(--gold-soft);
+    color: var(--body-color);
+    border: none;
+}
+
+.products .container .btn button:first-child {
+    background: transparent;
+    color: var(--gold-soft);
+    border: 1px solid var(--gold-soft);
+}
+
+.products .container .btn button:hover {
+    transition: 0.9s ease;
+    box-shadow: 0 6px 20px var(--gold-glow);
+}
+
+/* =========================================
+   8. BANNER SECTION
+   ========================================= */
+.banner {
+    position: relative;
+    width: 100%;
+    margin: auto;
+    height: 550px;
+    border-radius: 30px;
+    padding: 40px;
+    background: rgba(18, 18, 20, 0.4);
+    z-index: 10;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+    background: url('./banner/x.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.container-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.container-banner.landing-right {
+    max-width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    text-align: left;
+}
+
+.container-banner .landing-right .text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.container-banner .landing-right .text h1 {
+    font-size: 7vw;
+    color: var(--accent-color2);
+    font-family: "Montserrat";
+}
+
+.container-banner .landing-right .text h4 {
+    font-size: 2vw;
+    color: var(--light-gold);
+}
+
+.container-banner.text p {
+    font-size: 17px;
+    color: var(--accent-color);
+}
+
+.container-banner .btns {
+    display: flex;
+    margin-top: 20px;
+}
+
+.container-banner .btns button {
+    padding: 12px 30px;
+    margin-right: 10px;
+    cursor: pointer;
+    border: 1px solid var(--black-soft);
+    transition: 0.3s;
+}
+
+.container-banner .btn-shop {
+    background: var(--light-gold);
+    color: var(--dark-color);
+}
+
+.container-banner .btns button:hover {
+    background: var(--hover-color);
+}
+
+/* =========================================
+   9. PROS & SIDEBAR SECTION
+   ========================================= */
+.top-slide-pros {
+    position: absolute;
+    margin-bottom: 20px;
+    padding: 20px 0;
+    border-bottom: 2px solid var(--glass-border);
+    width: 90%;
+    margin: auto;
+    text-transform: capitalize;
+    font-size: 50px;
+    font-family: "Montserrat";
+    color: var(--accent-color2);
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+.top-slide-pros h2 span {
+    font-weight: normal;
+    text-transform: capitalize;
+    font-size: 50px;
+    font-family: "Montserrat";
+    color: var(--accent-color2);
+}
+
+.pros {
+    display: flex;
+    padding: 150px 0;
+    background: url(./black-background-with-fabric-texture.webp) center /cover no-repeat fixed;
+    position: relative;
+}
+
+.slider-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 30px;
+    height: fit-content;
+    position: sticky;
+    top: 10%;
+    align-self: flex-start;
+}
+
+.slider-cont .side-bar {
+    width: 300px;
+    background: rgba(43, 43, 43, 0.199);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 40px rgba(0,0,5,0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+.slider-cont .side-bar h2 {
+    padding: 20px 15px;
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: var(--accent-color2);
+    font-family: "Montserrat";
+}
+
+.slider-cont .side-bar a {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--accent-color);
+    border-top: 1px solid var(--glass-border);
+    transition: 0.3s ease-in-out;
+}
+
+.slider-cont .side-bar a:hover {
+    background: var(--hover-color);
+    color: var(--accent-color);
+    transition: 0.3s ease-in-out;
+}
+
+/* =========================================
+   10. ALL PRODUCTS SECTION
+   ========================================= */
+.allProduct {
+    padding: 50px 0;
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.allProduct .container {
+    position: relative;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    border-radius: 18px;
+    background: var(--card-bg);
+    border: 1px solid var(--divider-color);
+    overflow: visible;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed), border var(--transition-speed);
+    z-index: 1;
+}
+
+.allProduct .container:hover {
+    transform: translateY(-10px);
+    border: 1px solid var(--accent-color2);
+    box-shadow: 0 18px 45px var(--shadow-strong);
+    z-index: 10;
+}
+
+.allProduct .container .img-box {
+    width: 100%;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    background: rgba(3, 3, 3, 0.09);
+    border-radius: 20px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.5px);
+    -webkit-backdrop-filter: blur(6.5px);
+    border: 1px solid var(--card-bg);
+    position: relative;
+    overflow: hidden;
+}
+
+.allProduct .container .img-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.5));
+    transition: var(--transition-speed);
+    backface-visibility: hidden;
+    -webkit-font-smoothing: subpixel-antialiased;
+    transform: translateZ(0);
+}
+
+.allProduct .container .info h2 {
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--gold-soft);
+    margin-bottom: 6px;
+}
+
+.allProduct .container .info p {
+    font-size: 15px;
+    color: var(--text-dim);
+    margin-bottom: 14px;
+    line-height: 1.5;
+}
+
+.allProduct .container .price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-top: 15px;
+    margin-top: auto;
+    border-top: 1px solid var(--divider-color);
+    margin-bottom: 10px;
+}
+
+.allProduct .container .price p, 
+.allProduct .container .price h4 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin: 0;
+    display: inline-block;
+}
+
+.allProduct .container .btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.allProduct .container .btn button {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    transition: var(--transition-speed);
+}
+
+.allProduct .container .btn button:last-child {
+    background: var(--gold-soft);
+    color: var(--body-color);
+    border: none;
+}
+
+.allProduct .container .btn button:first-child {
+    background: transparent;
+    color: var(--gold-soft);
+    border: 1px solid var(--gold-soft);
+}
+
+.allProduct .container .btn button:hover {
+    transition: 0.9s ease;
+    box-shadow: 0 6px 20px var(--gold-glow);
+}
+
+/* =========================================
+   11. SOCIAL MEDIA & FOOTER SECTION
+   ========================================= */
+.social {
+    background: url(./black-background-with-fabric-texture.webp) center center no-repeat fixed;
+    background-size: cover;
+}
+
+.social .logo img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.social .text {
+    font-family: "FontAwesome";
+    word-spacing: 10px;
+    letter-spacing: 2px;
+}
+
+.social .container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    color: var(--accent-color);
+    font-size: 25px;
+}
+
+.social .container .center {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.social .container .center a {
+    border: 2px solid #ffffffcc;
+    width: 20%;
+    height: 50px;
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    gap: 15px;
+    box-shadow: -4px 6px 11px -5px rgba(148, 148, 148, 0.78);
+    animation: load 1s ease-in-out forwards;
+    color: var(--accent-color);
+    font-size: 25px;
+    transition: 0.3s ease-in-out;
+    font-weight: 900;
+    opacity: 0;
+}
+
+.social .container .center a:hover {
+    background: #ffffff9c;
+    color: var(--dark-color);
+    transform: scale(1.1);
+}
+
+@keyframes load {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.social .container .center a:nth-child(1) { animation-delay: 0.4s; }
+.social .container .center a:nth-child(2) { animation-delay: 0.6s; }
+.social .container .center a:nth-child(3) { animation-delay: 0.8s; }
+.social .container .center a:nth-child(4) { animation-delay: 1s; }
+
+.load.fb { color: #1877f2 !important; border-color: #1877f2; }
+.load.ig { color: #d6249f !important; border-color: #d6249f; align-items: center; }
+.load.tk { color: #ff0050 !important; border-color: #ff0050; align-items: center; padding-right: 20px; }
+.load.wa { color: #25d366 !important; border-color: #25d366; align-items: center; }
+
+#reload {
+    min-height: 40px;
+    font-family: "YourFont", sans-serif;
+    color: #ccc;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* =========================================
+   12. MEDIA QUERIES (RESPONSIVENESS)
+   ========================================= */
+@media (max-width: 768px) {
+    .container .center a {
+        width: 85%;
+        font-size: 18px;
+        height: 45px;
+    }
+    .logo img {
+        width: 100%;
+        margin: 0 auto;
+    }
+    .text h1 {
+        font-size: 22px;
+        flex-direction: column;
+        gap: 5px;
+    }
+    #reload {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container .center a {
+        width: 40%;
+    }
+    .allProduct .container{
+            width: 277px;
+    }
+}
+/* =========================================
+   12. IMPROVED RESPONSIVE DESIGN
+   ========================================= */
+
+/* شاشات اللاب توب والمتوسطة */
+@media (max-width: 1200px) {
+    header .container { width: 95%; }
+    .mySwiper { max-width: 100%; }
+    .landing_full .landing-right .text h1 { font-size: 8vw; }
+}
+
+/* التابلت (شاشات أقل من 992px) */
+@media (max-width: 992px) {
+    .slide-content {
+        flex-direction: column-reverse;
+        text-align: center;
+        height: auto;
+        padding: 30px 20px;
+    }
+
+    .landing-right {
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    .landing-left img {
+        width: 250px; /* تصغير حجم الساعة في الموبايل */
+    }
+
+    .pros {
+        flex-direction: column;
+        padding: 100px 0;
+    }
+
+    .slider-cont {
+        position: relative;
+        width: 100%;
+        top: 0;
+        padding: 20px;
+    }
+
+    .slider-cont .side-bar {
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto; /* السماح بالتمرير الجانبي للتصنيفات */
+        white-space: nowrap;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .slider-cont .side-bar a {
+        border-top: none;
+        border-left: 1px solid var(--glass-border);
+        padding: 10px 20px;
+    }
+
+    .allProduct {
+        justify-content: center;
+    }
+
+    .allProduct .container{
+    width: 277px;
+        }
+}
+
+/* الموبايل (أقل من 768px) */
+@media (max-width: 768px) {
+    header .container .nav .links {
+        display: none; /* إخفاء الروابط في الموبايل (يفضل استبدالها ببرجر منيو) */
+    }
+
+    .top-slide, .top-slide-pros {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .top-slide h2 span, .top-slide-pros h2 span {
+        font-size: 30px;
+    }
+
+    /* تحسين عرض كروت المنتجات */
+    .allProduct .container, .products .container {
+        width: 90%; /* كارت واحد في الصف للموبايل الصغير */
+        margin: auto;
+    }
+
+    .landing_full .landing-right .text h1 {
+        font-size: 12vw;
+    }
+
+    .container-banner .landing-right .text h1 {
+        font-size: 15vw;
+    }
+
+    .social .container .center a {
+        width: 90%;
+        font-size: 18px;
+    }
+
+    .backs h1 {
+        font-size: 30vw; /* تقليل حجم كلمة خلفية السلايدر */
+    }
+
+    .btns {
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+/* الموبايل الصغير جداً */
+@media (max-width: 480px) {
+    .landing-left img {
+        width: 180px;
+    }
+    
+    .products .container .info h2, .allProduct .container .info h2 {
+        font-size: 24px;
+    }
+
+    header .container .logo {
+        width: auto;
+        min-width: auto;
+    }
+}
+@media (max-width: 1600px) {
+    .allProduct .container{
+            width: 277px;
+    }
+    .side-bar{
+            width: 235px;
+
+    }
+}
